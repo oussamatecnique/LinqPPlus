@@ -42,12 +42,13 @@ var profs = new List<Professor>
     new () {Id = 12, Name = "Simo"}
 };
 
-var resultOfJoin1 = students.LeftJoinArrayIncElement(profs, "profIds", "Id").Select(x => new
+
+var resultOfJoin1 = students.LeftJoinArrayIncElement(profs, x => x.ProfIds.AsEnumerable(), x => x.Id).Select(x => new
 {
     Student = x.LeftItem.Name,
     Professor = x.rightItem?.Name
 });
-var resultOfJoin2 = profs.LeftJoinElementInArray(students, "Id", "profIds").Select(x => new
+var resultOfJoin2 = profs.LeftJoinElementInArray(students, x => x.Id, x => x.ProfIds.Select(x => float.Parse(x.ToString()))).Select(x => new
 {
     Professor= x.LeftItem.Name,
     Student = x.rightItem?.Name
