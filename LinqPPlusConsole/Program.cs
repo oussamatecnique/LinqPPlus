@@ -29,17 +29,17 @@ Console.ReadLine();*/
 
 var students = new List<Student2>
 {
-    new () {Name = "Ayman", Age = 30, ProfIds = [1, 2]},
-    new () {Name = "Ahmed", Age = 30, ProfIds = [1, 8]},
-    new () {Name = "Omar", Age = 30, ProfIds = [2]},
-    new () {Name = "Salim", Age = 30, ProfIds = [4, 9]}
+    new () {Name = "John", Age = 30, ProfIds = [1, 2]},
+    new () {Name = "Mark", Age = 30, ProfIds = [1, 8]},
+    new () {Name = "Paul", Age = 30, ProfIds = [2]},
+    new () {Name = "George", Age = 30, ProfIds = [4, 9]}
 };
 
 var profs = new List<Professor>
 {
-    new() {Id = 1, Name = "Mustapha"},
-    new() {Id = 2, Name = "Mohammed"},
-    new () {Id = 12, Name = "Simo"}
+    new() {Id = 1, Name = "Philip"},
+    new() {Id = 2, Name = "Max"},
+    new () {Id = 12, Name = "Arnold"}
 };
 
 
@@ -53,7 +53,19 @@ var resultOfJoin2 = profs.LeftJoinElementInArray(students, x => x.Id, x => x.Pro
     Professor= x.LeftItem.Name,
     Student = x.rightItem?.Name
 });
+// test filter extensions
+int[] table1 = [1, 1, 2, 3];
+int[] table2 = [1, 2, 3];
+
+var left = new List<string> { "apple", "banana", "cherry" };
+var right = new List<int> { 1, 2, 3 };
+
+// Assuming 'left' elements are matched with 'right' elements based on string length
+
+//Console.WriteLine(JsonSerializer.Serialize(table1.ExceptByOccurrences(table2, x=> x)));
+
+//Console.WriteLine(JsonSerializer.Serialize(students.DistinctByKey(x => x.Age)));
 Console.WriteLine(JsonSerializer.Serialize(resultOfJoin1));
-Console.WriteLine(JsonSerializer.Serialize(resultOfJoin2));
+//Console.WriteLine(JsonSerializer.Serialize(resultOfJoin2));
 Console.ReadLine();
 
